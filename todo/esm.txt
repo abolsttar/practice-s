@@ -1,0 +1,4 @@
+'sag',
+'gav',
+'khar',
+'babay'

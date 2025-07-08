@@ -1,0 +1,24 @@
+# include 'header.html'
+<h3>login form</h3>
+<form action="/login" method="POST" novalidate >
+    {{ form.csrf_token }}
+<ul>
+    {% for field, errors in form.errors.items() %}
+    <li><b style="color: red;">{{', '.join(errors)}}</b></li>
+    {% endfor %}
+</ul> 
+
+    <p>{{ form.username(placeholder="enter a username") }}</p>
+    <p>{{form.password(placeholder="enter a password")}}</p>
+    <p>{{ form.submit(value='submit form')}}</p>
+
+</form>
+<br> 
+<form action="/login" method="GET">
+    <p><input type="text" name="find" placeholder="enter username ID"></p>
+    <p><button type="submit">submit form</button></p>
+</form>
+
+{{ userid }}
+
+# include 'footer.html'
