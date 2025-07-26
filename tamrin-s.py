@@ -12,7 +12,7 @@
 
 # cg = (int(input('dma_cg: ')))
 # f1 = (cg*9/5)+32
-# print(f1, f'farenhait') 
+# print(f1, 'farenhait')  # حذف f-string اضافی
 
 ######################################
 """tamrin2"""
@@ -20,7 +20,7 @@
 ###################################################################Programming practice
 # a = float(input('nm float 1: '))
 # b = float(input('nm float 2: '))
-# print((a +b )* 2)
+# print((a + b) * 2)  # حذف فاصله اضافی
 
 # a = int(input('nm: '))
 # if a % 2 ==0:
@@ -44,10 +44,9 @@
 #     if inus == "don":
 #         break
 #     try :
-#         int(inus)
-#         nmb.append(inus)
-#     except:
-#         print('?')
+#         nmb.append(int(inus))  # تبدیل به عدد و اضافه کردن
+#     except ValueError:
+#         print('لطفاً عدد معتبر وارد کنید')
 # print(max(nmb))
 # print(nmb)
 ###################################################
@@ -151,7 +150,7 @@
 #     elif b == '=':
 #         cmd = equal
 #     else:
-#         cmd = lambda x=b: press(x)
+#         cmd = lambda x=b: press(x)  # مشکل: lambda closure
 #     Button(root, text=b, width=5, height=2, font=('Arial', 16), command=cmd).grid(row=row, column=col, padx=5, pady=5)
 #     col += 1
 #     if col > 3:
@@ -408,13 +407,14 @@
 #         # گرفتن اطلاعات کاربر انتخاب شده
 #         values = tbl.item(selected_item[0], 'values')
 #         user_str = f"{values[0]} {values[1]} - سن: {values[2]}"
-#         # حذف از Treeview
-
-#         tbl.delete(selected_item[0])
-#         # حذف از لیست users و Listbox
+#         # حذف از لیست users اول
 #         if user_str in users:
 #             idx = users.index(user_str)
 #             users.pop(idx)
+#         # سپس حذف از Treeview
+#         tbl.delete(selected_item[0])
+#     else:
+#         error_label.config(text='لطفاً یک کاربر را انتخاب کنید!')
 
 
 # def edit_user():
@@ -514,17 +514,5 @@
 # lib.search("پایتون")
 # lib.remove_book("شازده کوچولو")
 # lib.show_all()
-##################
-# from abc import ABC, abstractmethod
-# from multiprocessing import set_forkserver_preload
-# class Person(ABC):
-#     def fard (self, name, age ):
-#         self.name = name
-#         self.age = age
-
-
-# @abstractmethod
-# def info(self):
-#     pass
-
+########################################################
 
