@@ -1,4 +1,6 @@
 """tamrin1"""
+import unittest
+
 # a = (int(input('n1')))
 # aq = (int(input('n2')))
 # if a > aq:
@@ -447,72 +449,208 @@
 # root.mainloop()
 
 # # #######################################################
-# # کلاس پایه کتاب
-# class Book:
-#     def __init__(self, title, author, year):
-#         self.title = title
-#         self.author = author
-#         self.year = year
+# کلاس پایه کتاب
+class Book:
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
 
-#     def info(self):
-#         return f"{self.title} - {self.author} ({self.year})"
+    def info(self):
+        return f"{self.title} - {self.author} ({self.year})"
 
-# # زیرکلاس کتاب چاپی
-# class PrintedBook(Book):
-#     def __init__(self, title, author, year, pages):
-#         super().__init__(title, author, year)
-#         self.pages = pages
+# زیرکلاس کتاب چاپی
+class PrintedBook(Book):
+    def __init__(self, title, author, year, pages):
+        super().__init__(title, author, year)
+        self.pages = pages
 
-#     def info(self):
-#         return f"{super().info()} [چاپی، صفحات: {self.pages}]"
+    def info(self):
+        return f"{super().info()} [چاپی، صفحات: {self.pages}]"
 
-# # زیرکلاس کتاب الکترونیکی
-# class EBook(Book):
-#     def __init__(self, title, author, year, file_format):
-#         super().__init__(title, author, year)
-#         self.file_format = file_format
+# زیرکلاس کتاب الکترونیکی
+class EBook(Book):
+    def __init__(self, title, author, year, file_format):
+        super().__init__(title, author, year)
+        self.file_format = file_format
 
-#     def info(self):
-#         return f"{super().info()} [الکترونیکی، فرمت: {self.file_format}]"
+    def info(self):
+        return f"{super().info()} [الکترونیکی، فرمت: {self.file_format}]"
 
-# # کلاس مدیریت کتابخانه
-# class Library:
-#     def __init__(self):
-#         self.books = []
+# کلاس مدیریت کتابخانه
+class Library:
+    def __init__(self):
+        self.books = []
 
-#     def add_book(self, book):
-#         self.books.append(book)
-#         print("کتاب با موفقیت اضافه شد.")
+    def add_book(self, book):
+        self.books.append(book)
+        print("کتاب با موفقیت اضافه شد.")
 
-#     def remove_book(self, title):
-#         for book in self.books:
-#             if book.title == title:
-#                 self.books.remove(book)
-#                 print("کتاب حذف شد.")
-#                 return
-#         print("کتاب پیدا نشد.")
+    def remove_book(self, title):
+        for book in self.books:
+            if book.title == title:
+                self.books.remove(book)
+                print("کتاب حذف شد.")
+                return
+        print("کتاب پیدا نشد.")
 
-#     def search(self, keyword):
-#         found = [book for book in self.books if keyword in book.title or keyword in book.author]
-#         if found:
-#             for book in found:
-#                 print(book.info())
-#         else:
-#             print("کتابی پیدا نشد.")
+    def search(self, keyword):
+        found = [book for book in self.books if keyword in book.title or keyword in book.author]
+        if found:
+            for book in found:
+                print(book.info())
+        else:
+            print("کتابی پیدا نشد.")
 
-#     def show_all(self):
-#         if not self.books:
-#             print("کتابی در کتابخانه وجود ندارد.")
-#         for book in self.books:
-#             print(book.info())
+    def show_all(self):
+        if not self.books:
+            print("کتابی در کتابخانه وجود ندارد.")
+        for book in self.books:
+            print(book.info())
 
-# # نمونه استفاده:
-# lib = Library()
-# lib.add_book(PrintedBook("شازده کوچولو", "آنتوان دو سنت اگزوپری", 1943, 120))
-# lib.add_book(EBook("پایتون برای همه", "چارلز سیور", 2016, "PDF"))
-# lib.show_all()
-# lib.search("پایتون")
-# lib.remove_book("شازده کوچولو")
-# lib.show_all()
-########################################################
+# تست‌های کلاس Library
+class TestLibrary(unittest.TestCase):
+    """کلاس تست برای کلاس Library"""
+    
+    def setUp(self):
+        """راه‌اندازی اولیه برای هر تست"""
+        self.library = Library()
+        self.book1 = PrintedBook("شازده کوچولو", "آنتوان دو سنت اگزوپری", 1943, 120)
+        self.book2 = EBook("پایتون برای همه", "چارلز سیور", 2016, "PDF")
+        self.book3 = Book("هری پاتر", "جی‌کی رولینگ", 1997)
+    
+    def test_library_initialization(self):
+        """تست مقداردهی اولیه کتابخانه"""
+        self.assertEqual(len(self.library.books), 0)
+        self.assertIsInstance(self.library.books, list)
+    
+    def test_add_book(self):
+        """تست اضافه کردن کتاب"""
+        initial_count = len(self.library.books)
+        self.library.add_book(self.book1)
+        self.assertEqual(len(self.library.books), initial_count + 1)
+        self.assertIn(self.book1, self.library.books)
+    
+    def test_add_multiple_books(self):
+        """تست اضافه کردن چندین کتاب"""
+        self.library.add_book(self.book1)
+        self.library.add_book(self.book2)
+        self.library.add_book(self.book3)
+        self.assertEqual(len(self.library.books), 3)
+    
+    def test_remove_book_existing(self):
+        """تست حذف کتاب موجود"""
+        self.library.add_book(self.book1)
+        self.library.add_book(self.book2)
+        initial_count = len(self.library.books)
+        self.library.remove_book("شازده کوچولو")
+        self.assertEqual(len(self.library.books), initial_count - 1)
+        self.assertNotIn(self.book1, self.library.books)
+    
+    def test_remove_book_nonexistent(self):
+        """تست حذف کتاب غیرموجود"""
+        self.library.add_book(self.book1)
+        initial_count = len(self.library.books)
+        self.library.remove_book("کتاب غیرموجود")
+        self.assertEqual(len(self.library.books), initial_count)  # تعداد تغییر نکرده
+    
+    def test_search_by_title(self):
+        """تست جستجو بر اساس عنوان"""
+        self.library.add_book(self.book1)
+        self.library.add_book(self.book2)
+        # این تست فقط بررسی می‌کند که متد خطا نمی‌دهد
+        # چون متد search فقط print می‌کند
+        try:
+            self.library.search("شازده")
+        except Exception as e:
+            self.fail(f"متد search خطا داد: {e}")
+    
+    def test_search_by_author(self):
+        """تست جستجو بر اساس نویسنده"""
+        self.library.add_book(self.book1)
+        self.library.add_book(self.book2)
+        try:
+            self.library.search("آنتوان")
+        except Exception as e:
+            self.fail(f"متد search خطا داد: {e}")
+    
+    def test_search_nonexistent(self):
+        """تست جستجوی کلیدواژه غیرموجود"""
+        self.library.add_book(self.book1)
+        try:
+            self.library.search("کلمه‌ای که وجود ندارد")
+        except Exception as e:
+            self.fail(f"متد search خطا داد: {e}")
+    
+    def test_show_all_empty(self):
+        """تست نمایش کتابخانه خالی"""
+        try:
+            self.library.show_all()
+        except Exception as e:
+            self.fail(f"متد show_all خطا داد: {e}")
+    
+    def test_show_all_with_books(self):
+        """تست نمایش کتابخانه با کتاب"""
+        self.library.add_book(self.book1)
+        self.library.add_book(self.book2)
+        try:
+            self.library.show_all()
+        except Exception as e:
+            self.fail(f"متد show_all خطا داد: {e}")
+
+# تست‌های کلاس Book
+class TestBook(unittest.TestCase):
+    """کلاس تست برای کلاس Book"""
+    
+    def test_book_creation(self):
+        """تست ایجاد کتاب"""
+        book = Book("عنوان کتاب", "نویسنده", 2023)
+        self.assertEqual(book.title, "عنوان کتاب")
+        self.assertEqual(book.author, "نویسنده")
+        self.assertEqual(book.year, 2023)
+    
+    def test_book_info(self):
+        """تست متد info"""
+        book = Book("عنوان کتاب", "نویسنده", 2023)
+        expected_info = "عنوان کتاب - نویسنده (2023)"
+        self.assertEqual(book.info(), expected_info)
+
+# تست‌های کلاس PrintedBook
+class TestPrintedBook(unittest.TestCase):
+    """کلاس تست برای کلاس PrintedBook"""
+    
+    def test_printed_book_creation(self):
+        """تست ایجاد کتاب چاپی"""
+        book = PrintedBook("عنوان", "نویسنده", 2023, 200)
+        self.assertEqual(book.title, "عنوان")
+        self.assertEqual(book.author, "نویسنده")
+        self.assertEqual(book.year, 2023)
+        self.assertEqual(book.pages, 200)
+    
+    def test_printed_book_info(self):
+        """تست متد info برای کتاب چاپی"""
+        book = PrintedBook("عنوان", "نویسنده", 2023, 200)
+        expected_info = "عنوان - نویسنده (2023) [چاپی، صفحات: 200]"
+        self.assertEqual(book.info(), expected_info)
+
+# تست‌های کلاس EBook
+class TestEBook(unittest.TestCase):
+    """کلاس تست برای کلاس EBook"""
+    
+    def test_ebook_creation(self):
+        """تست ایجاد کتاب الکترونیکی"""
+        book = EBook("عنوان", "نویسنده", 2023, "PDF")
+        self.assertEqual(book.title, "عنوان")
+        self.assertEqual(book.author, "نویسنده")
+        self.assertEqual(book.year, 2023)
+        self.assertEqual(book.file_format, "PDF")
+    
+    def test_ebook_info(self):
+        """تست متد info برای کتاب الکترونیکی"""
+        book = EBook("عنوان", "نویسنده", 2023, "PDF")
+        expected_info = "عنوان - نویسنده (2023) [الکترونیکی، فرمت: PDF]"
+        self.assertEqual(book.info(), expected_info)
+
+if __name__ == "__main__":
+    unittest.main()
 
