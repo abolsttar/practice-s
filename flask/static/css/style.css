@@ -1,0 +1,33 @@
+body, html {
+    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #222;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+footer.footer {
+    font-size: 1rem;
+    background: linear-gradient(90deg, #0d6efd 60%, #6610f2 100%);
+}
+
+/* حالت تاریک */
+body.dark-mode {
+    background-color: #18191a;
+    color: #f1f1f1;
+}
+body.dark-mode .navbar, body.dark-mode .footer {
+    background-color: #222 !important;
+}
+body.dark-mode .alert {
+    background-color: #222;
+    color: #f1f1f1;
+    border-color: #444;
+}
+body.dark-mode .card {
+    background-color: #23272b;
+    color: #f1f1f1;
+} 

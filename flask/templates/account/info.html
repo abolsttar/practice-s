@@ -1,30 +1,19 @@
-{% include './header.html' %}
-
-
-<div class="container">
-    <div class="row mt-4">
-      {% include "./account/menu.html" %}
-        <div class="col-4 border bg-white">
-            <div class="input-group mb-3 mt-3">
-                <span class="input-group-text" id="basic-addon1">Name</span>
-             </div>
-              <div class="input-group mb-3 mt-3">  
-                <span class="input-group-text" id="basic-addon1">Email</span>
-                <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" readonly>
-              </div>
-              <div class="input-group mb-3 mt-3">
-                <span class="input-group-text" id="basic-addon1">Phone</span>
-                <input type="text" class="form-control" placeholder="sag Phone" aria-label="Username" aria-describedby="basic-addon1" readonly>
-              </div>
-              <div class="input-group mb-3 mt-3">
-                <span class="input-group-text" id="basic-addon1">Create Account Date</span>
-                <input type="text" class="form-control" placeholder="dite yrdryr" aria-label="Username" aria-describedby="basic-addon1" readonly>
-              </div>
-           
+{% extends 'base.html' %}
+{% block title %}اطلاعات کاربر | وبلاگ مدرن{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h2 class="mb-4">اطلاعات کاربر</h2>
+                <ul class="list-group list-group-flush text-start">
+                    <li class="list-group-item"><strong>نام:</strong> {{ current_user.name }}</li>
+                    <li class="list-group-item"><strong>ایمیل:</strong> {{ current_user.email }}</li>
+                    <li class="list-group-item"><strong>شماره تماس:</strong> {{ current_user.phone or '---' }}</li>
+                    <li class="list-group-item"><strong>تاریخ عضویت:</strong> {{ current_user.created_at.strftime('%Y/%m/%d') if current_user.created_at else '---' }}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-
-
-
-{% include './footer.html' %}
+{% endblock %}

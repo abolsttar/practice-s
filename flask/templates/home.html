@@ -1,16 +1,43 @@
-{% include 'header.html' %}
-
-
-<div class="container">
-    <div class="row mt-4">
-        <h2>Lastest Posts</h2>
-        <hr>
-        
-
+{% extends 'base.html' %}
+{% block title %}خانه | وبلاگ مدرن{% endblock %}
+{% block content %}
+<div class="row align-items-center justify-content-center">
+    <div class="col-lg-7 text-center">
+        <h1 class="display-4 fw-bold mb-4">به وبلاگ مدرن خوش آمدید!</h1>
+        <p class="lead mb-4">یک پلتفرم ساده و شیک برای اشتراک‌گذاری مطالب، مدیریت حساب کاربری و تجربه کاربری عالی با تم روشن و تاریک.</p>
+        <div class="mb-4">
+            <a href="/signup" class="btn btn-primary btn-lg mx-2">ثبت‌نام رایگان</a>
+            <a href="/login" class="btn btn-outline-primary btn-lg mx-2">ورود</a>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-user-shield fa-2x mb-3 text-primary"></i>
+                        <h5 class="card-title">امنیت بالا</h5>
+                        <p class="card-text">رمزنگاری پسوردها و محافظت از اطلاعات کاربران با جدیدترین متدها.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-moon fa-2x mb-3 text-primary"></i>
+                        <h5 class="card-title">تم تاریک/روشن</h5>
+                        <p class="card-text">امکان تغییر تم سایت برای راحتی چشم و تجربه کاربری بهتر.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-mobile-alt fa-2x mb-3 text-primary"></i>
+                        <h5 class="card-title">کاملاً ریسپانسیو</h5>
+                        <p class="card-text">سازگار با موبایل، تبلت و دسکتاپ با طراحی مدرن و واکنش‌گرا.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
-
-
-{% include 'footer.html' %}
+{% endblock %}

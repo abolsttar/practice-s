@@ -1,12 +1,21 @@
-{% include './header.html' %}
-
-
-<div class="container">
-    <div class="row mt-4">
-        {% include "./account/menu.html" %}
+{% extends 'base.html' %}
+{% block title %}پروفایل | وبلاگ مدرن{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <img src="{{ current_user.avatar or '/static/img/avatar.jpg' }}" class="rounded-circle mb-3" width="100" height="100" alt="آواتار">
+                <h3 class="fw-bold mb-2">{{ current_user.name }}</h3>
+                <p class="text-muted mb-1">{{ current_user.email }}</p>
+                <p class="mb-3"><i class="fas fa-phone"></i> {{ current_user.phone or '---' }}</p>
+                <div class="d-flex justify-content-center gap-2">
+                    <a href="/account/edit" class="btn btn-outline-primary">ویرایش پروفایل</a>
+                    <a href="/account/changepassword.html" class="btn btn-outline-warning">تغییر رمز عبور</a>
+                    <a href="/account/avatar" class="btn btn-outline-secondary">تغییر آواتار</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
-
-{% include './footer.html' %}
+{% endblock %}
