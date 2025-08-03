@@ -152,7 +152,7 @@ import unittest
 #     elif b == '=':
 #         cmd = equal
 #     else:
-#         cmd = lambda x=b: press(x)  # مشکل: lambda closure
+#         cmd = lambda x=b: press(x)  
 #     Button(root, text=b, width=5, height=2, font=('Arial', 16), command=cmd).grid(row=row, column=col, padx=5, pady=5)
 #     col += 1
 #     if col > 3:
