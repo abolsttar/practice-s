@@ -1,0 +1,35 @@
+[
+  {
+    "name": "sara",
+    "family": "karimi",
+    "phone": "09121112222",
+    "cod_student": "40012345",
+    "jensyt": "female",
+    "age": 20,
+    "field": "computer engineering",
+    "history": [],
+    "university": null
+  },
+  {
+    "name": "reza",
+    "family": "hosseini",
+    "phone": "09123334455",
+    "cod_student": "40012346",
+    "jensyt": "male",
+    "age": 21,
+    "field": "mechanical engineering",
+    "history": [],
+    "university": null
+  },
+  {
+    "name": "fatemeh",
+    "family": "rahimi",
+    "phone": "09125556677",
+    "cod_student": "40012347",
+    "jensyt": "female",
+    "age": 19,
+    "field": "electrical engineering",
+    "history": [],
+    "university": null
+  }
+]

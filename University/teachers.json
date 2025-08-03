@@ -1,0 +1,24 @@
+[
+  {
+    "name": "milad",
+    "family": "moradiyan",
+    "phone": "09123456789",
+    "age": 24,
+    "jensyt": "male",
+    "edu": "PhD",
+    "history": [
+      "10 years"
+    ]
+  },
+  {
+    "name": "ali",
+    "family": "ahmadi",
+    "phone": "09112223344",
+    "age": 30,
+    "jensyt": "male",
+    "edu": "MSc",
+    "history": [
+      "5 years"
+    ]
+  }
+]
